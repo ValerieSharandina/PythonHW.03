@@ -6,15 +6,19 @@
 - [2, 3, 4, 5, 6] => [12, 15, 16];
 - [2, 3, 5, 6] => [12, 15]
 '''
-arr = list(map(int, input('Введи числа: ').split()))
-prod = 0
-print(f'Исходный массив: {arr}')
+array = list(map(int, input('Введи числа: ').split()))
 
-for i in range(int(len(arr) / 2)):
-    prod = arr[i] * arr[len(arr) - i - 1]
-    print(prod)
-if len(arr) % 2 == 1:
-    print(arr[int(len(arr) / 2)]*arr[int(len(arr) / 2)])
+def product_of_pairs(numbers_list:list) -> list:
+    result_list = []
+    first_index = 0
+    last_index = len(numbers_list) - 1
+    while last_index - first_index >= 0:
+        result_list.append(numbers_list[first_index] * numbers_list[last_index])
+        first_index += 1
+        last_index -= 1
+    return result_list
+print(f'Исходный массив: {array}')
+print(f'массив из произведений пар исходного массива {product_of_pairs(array)}')
 
 
 
